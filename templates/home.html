@@ -1,4 +1,7 @@
 {% extends "_base.html" %}
+ <!-- this must be the first tag in the html file -->
+{%load static%}
+
 {% block title %}Home{% endblock title %}
 {% block content %}
 <h1>This is the new home page.</h1>
@@ -12,4 +15,9 @@
 </span></p>
 <p>Don't have an account ? <a href="{%url 'signup'%}">Click Here To Register</a> it takes less than 2 minutes</p>
 {%endif%}
+<span>
+
+    <img class="eren" src="{% static 'images/eren-yeager-season-4.jpeg' %}">
+
+</span>
 {% endblock content %}
