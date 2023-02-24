@@ -6,9 +6,12 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 
 class CustomUserCreationForm(UserCreationForm):
-    class meta:
+    class Meta:
         model = get_user_model()
-        fields = ("email", "username")
+        fields = (
+            "email",
+            "username",
+        )
 
 
 # it is not needed to type "password" above because it is shown by default

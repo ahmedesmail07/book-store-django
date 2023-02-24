@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views import generic
+from .forms import CustomUserCreationForm  # The Customized form i did firstly
 
-# Create your views here.
+
+class SignupPageView(generic.CreateView):
+    form_class = CustomUserCreationForm  # this my own customized form
+    success_url = reverse_lazy("login")  # befor URLconf is loaded
+    template_name = "registration/signup.html"  # redirct to this form page

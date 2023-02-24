@@ -2,4 +2,14 @@
 {% block title %}Home{% endblock title %}
 {% block content %}
 <h1>This is the new home page.</h1>
+{%if user.is_authenticated%}
+<p> Hi, Welcome To The Site {{user.username}}</p>
+<p>You are logged in as {{user.email}}</p>
+<p><a href="{%url 'logout'%}">Click Here To Log out</a></p>
+{%else%}
+<p>You are not logged in <span>
+    Wanna log in ?<a href="{%url 'login'%}"> click here </a>
+</span></p>
+<p>Don't have an account ? <a href="{%url 'signup'%}">Click Here To Register</a> it takes less than 2 minutes</p>
+{%endif%}
 {% endblock content %}
