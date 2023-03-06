@@ -3,12 +3,13 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),  # this is for admin panel url
-    path(
-        "accounts/", include("django.contrib.auth.urls")
-    ),  # u can manage ur auth from here
-    path("accounts/", include("accounts.urls")),
+    path("accounts/", include("allauth.urls")),
     path("", include("pages.urls")),  # urls for pages app
     # urls for accounts (REGISTER)
+    # path(
+    #     "accounts/", include("django.contrib.auth.urls")
+    # ),  # u can manage ur auth from here
+    # Since using allauth there is no need for each : django.contrib.auth.url
 ]
 
 # the availabe urls and pages are :

@@ -37,11 +37,17 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+    "allauth",
+    "allauth.account",
     "crispy_forms",  # from the requirements.txt
     "crispy_bootstrap5",  # from the requirements.txt
-    "accounts.apps.AccountsConfig",  #
-    "pages.apps.PagesConfig",  #
+    "accounts.apps.AccountsConfig",
+    "pages.apps.PagesConfig",
 ]
+
+SITE_ID = 1  # Allauth config
+
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -75,6 +81,15 @@ TEMPLATES = [
         },
     },
 ]
+LOGIN_REDIRECT_URL = "home"
+ACCOUNT_LOGOUT_REDIRECT = "home"
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 WSGI_APPLICATION = "django_project.wsgi.application"
 
@@ -128,7 +143,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
@@ -137,5 +152,13 @@ STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-LOGIN_REDIRECT_URL = "home"
-LOGOUT_REDIRECT_URL = "home"
+
+# ACCOUNT_SESSION_REMEMBER = True
+# BY Deafault allauth will shows a check box of login page that asks u for
+# remembering the session or not so if u make it == True it will automatically disappeared
+
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # in the register form
+
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # this allows you to
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
