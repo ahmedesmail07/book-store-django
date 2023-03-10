@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "allauth",
     "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.github",
     "crispy_forms",  # from the requirements.txt
     "crispy_bootstrap5",  # from the requirements.txt
     "accounts.apps.AccountsConfig",
@@ -159,6 +161,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # in the register form
 
-ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # this allows you to
+ACCOUNT_AUTHENTICATION_METHOD = (
+    "username_email"  # this allows you to login with email or password
+)
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
