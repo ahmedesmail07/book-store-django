@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-zor5ob$j_$bmw8^0wxv#-kx476v9=7wj070i(rfw4n4xq#al&(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".herokuapp.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -162,7 +162,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # in the register form
 
 ACCOUNT_AUTHENTICATION_METHOD = (
-    "username_email"  # this allows you to login with email or password
+    "username_email"  # this allows you to login with email or username
 )
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
