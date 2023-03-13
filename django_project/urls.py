@@ -4,7 +4,8 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),  # this is for admin panel url
     path("accounts/", include("allauth.urls")),
-    path("", include("pages.urls")),  # urls for pages app
+    path("", include("pages.urls")),
+    path("books/", include("books.urls")),
     # urls for accounts (REGISTER)
     # path(
     #     "accounts/", include("django.contrib.auth.urls")

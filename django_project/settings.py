@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",  # from the requirements.txt
     "accounts.apps.AccountsConfig",
     "pages.apps.PagesConfig",
+    "books.apps.BooksConfig",
 ]
 
 SITE_ID = 1  # Allauth config
@@ -166,5 +167,12 @@ ACCOUNT_AUTHENTICATION_METHOD = (
 )
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
-DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
+
+# Sending-Email-Verification-Using-SendGrid
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+DEFAULT_FROM_EMAIL = "bookstoreusingdjango@outlook.com"
+EMAIL_HOST = "smtp.sendgrid.net"
+EMAIL_HOST_USER = "apikey"
+EMAIL_HOST_PASSWORD = "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"  # enter your password
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
