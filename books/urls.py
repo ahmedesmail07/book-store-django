@@ -5,5 +5,5 @@ from .views import *
 urlpatterns = [
     path("", BookListView.as_view(), name="book_list"),
     # Adding Individual page for each book :
-    path("<int:pk>/",BookDetailView.as_view(),name="book_detail") ,
+    path("<uuid:pk>/",BookDetailView.as_view(),name="book_detail") ,
 ]
