@@ -3,7 +3,12 @@
 {% block content %}
 {% for book in book_list %}
 <div>
-<h2><a href="">{{ book.title }}</a></h2>
+    <h2>
+        <!-- <a href="{%url 'book_detail' pk=book.pk%}">{{ book.title }}</a> -->
+        <!-- whenever you define in your model the get_absolute_url you can return the specefic
+        url of a book just only using it  -->
+        <a href="{{book.get_absolute_url}}">{{ book.title }}</a>
+    </h2>
 
 </div>
 {% endfor %}
